@@ -1,0 +1,36 @@
+swagger: '2.0'
+info:
+  description:  NEARBY API
+  version: '1.0.0'
+  title: 'SWAGGER API'
+schemes:
+  - 'https'
+  - 'http'
+paths:
+  /amenities:
+    get:
+        tags:
+        - 'root'
+        summary: 'Get the amenities'
+        description: 'to get the amenities from the json'
+        operationId: 'getAmenities'
+        produces:
+        - 'application/json'
+        responses:
+        200:
+          description: 'success'    
+  /toilet:
+    post:
+      tags:
+        - 'root'
+      summary: 'Add new toilet'
+      description: 'Add new toilet into exiting types of toilet'
+      operationId: 'addToilet'
+      parameters:
+        - extraInfo: Just information about the new toilet
+          location: location for implement the new toilet
+          title: Title for toilet name
+          type: types of toilet
+      responses:
+        200:
+          description: 'success'    
