@@ -39,9 +39,7 @@ createMiddleware('api.yml', app, (err, middleware) => {
       'Content-Type, authorization, access-token',
     );
     app.use((error) => {
-    //  Logger.log(`Request received for URI ${req.path}`);
       res.status(error.status || 500).send(JSON.stringify(error.message));
-      // next();
     });
     next();
   });
