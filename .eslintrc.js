@@ -9,7 +9,6 @@ module.exports = {
     "no-unused-consts": 0,
     "no-restricted-syntax": 0,
     "prefer-promise-reject-errors": 0,
-    "radix": 0,
     "array-callback-return": 0,
     "consistent-return": 0,
     "no-console": 0,

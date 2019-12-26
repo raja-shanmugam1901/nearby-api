@@ -17,7 +17,7 @@ paths:
         produces:
         - 'application/json'
         responses:
-        200:
+         200:
           description: 'success'    
   /toilet:
     post:
@@ -27,10 +27,40 @@ paths:
       description: 'Add new toilet into exiting types of toilet'
       operationId: 'addToilet'
       parameters:
-        - extraInfo: Just information about the new toilet
-          location: location for implement the new toilet
-          title: Title for toilet name
-          type: types of toilet
+        - name: toilet
+          in: body
+          schema:
+           $ref: '#/definitions/toilet'
+      produces:
+        - 'application/json'
       responses:
         200:
-          description: 'success'    
+          description: 'success'  
+    delete:
+      tags:
+      - 'root'
+      summary: 'Delete toilet'
+      operationId: 'deleteToilet'
+      parameters:
+      - name: 'loo'
+        in: 'path'
+        type: 'string'
+        description: "Name of the toilet that needs to be deleted"
+      produces:
+        - 'application/json'
+      responses:
+        200:
+          description: 'success'
+definitions:
+ toilet:
+  type: object
+  properties:
+      extraInfo:
+        type: "string"
+      location:
+        type: "string"
+      title:
+        type: "string"
+
+      
+      

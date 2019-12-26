@@ -8,6 +8,9 @@ class Routes {
     router.post('/toilet', (req, res) => {
       ToiletController.addToilet(req, res);
     });
+    router.delete('/toilet', (req, res) => {
+      ToiletController.deleteToilet(req, res);
+    });
   }
 }
 module.exports = Routes;

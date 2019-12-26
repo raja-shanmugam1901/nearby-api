@@ -7,22 +7,27 @@ const addToilet = async (req, res) => {
   const amenitiesList = response.AmenitiesList;
   const toilet = req.body;
   const error = constant.TYPE;
-
-  if (toilet.type.length === 0) {
+  const resp = await amentiesService.newToilet(toilet, res);
+  if (toilet.extraInfo) {
     res.status(500).send(error);
   } else {
     amenitiesList.forEach((amenities) => {
       if (amenities.toilets) {
-        for (const toiletName of toilet.type) {
-          amenities.toilets.push(toiletName);
-        }
+        amenities.toilets.push(toilet.extraInfo);
       }
     });
   }
-  const resp = await amentiesService.addToilet();
+  amentiesService.addToilet();
   res.send(resp);
 };
 
+// delete toilet based on id
+const deleteToilet = async (req, res) => {
+  const { loo } = req.headers;
+  const resp = await amentiesService.deleteToilet(loo, res);
+  res.send(resp);
+};
 module.exports = {
   addToilet,
+  deleteToilet,
 };
