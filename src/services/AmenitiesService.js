@@ -48,6 +48,7 @@ class AmenitiesService {
     await NewToiletReferenceModel.create({
       Title: toilet.title,
       Location: toilet.location,
+      extraInfo: toilet.extraInfo
     }).then((records) => {
       if (records) {
         console.log('Records Saved Successfully');
