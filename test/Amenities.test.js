@@ -2,11 +2,12 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const sinon = require('sinon');
 
-const AmenitiesService = require('../src/services/AmenitiesService');
+// const AmenitiesService = require('../src/services/AmenitiesService');
 const fileUtils = require('../src/utils/FileUtils');
 const appServer = require('../app');
 
 const { expect } = chai;
+// eslint-disable-next-line no-unused-vars
 const should = chai.should();
 
 chai.use(chaiHttp);
@@ -23,20 +24,21 @@ describe('AmenitiesService', () => {
   it('should list Amenities and Toilet types on /amenities GET', (done) => {
     chai.request(appServer)
       .get('/amenities')
-      .end(function(err, res){
+      .end((err, res) => {
         res.should.have.status(200);
         done();
       });
   });
-  it('should add a new toilet details on /toilet POST', (done) => {
+  it('should add a  new toilet details on /toilet POST', (done) => {
     chai.request(appServer)
       .post('/toilet')
-      .send({'extraInfo': 'check', 'location': 'brisbane', 'title': 'test'})
+      .send({ extraInfo: 'check', location: 'brisbane', title: 'test' })
       .end((err, res) => {
         res.should.have.status(200);
+        //  eslint-disable-next-line no-unused-expressions
         res.should.be.json;
         res.body.should.be.a('object');
-        
+
         res.body.should.have.property('Location');
         res.body.should.have.property('Title');
         res.body.Location.should.equal('brisbane');
