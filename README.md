@@ -1,4 +1,4 @@
-# nearby-api
+# nearby-api-project
 This Api is integrated with nearby-ui and used to send response to the client based on the router request.
 
 ## Framework, Languages & tools
